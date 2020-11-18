@@ -1,5 +1,6 @@
 package org.sy.springclouddemo.controller;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -20,7 +21,14 @@ public class DeptController {
         return deptService.add(dept);
     }
 
+    @RequestMapping(value="/dept/list",method=RequestMethod.GET)
+    public List<Dept> list()
+    {
+        return deptService.list();
+    }
+
     @RequestMapping(value="/dept/get/{id}",method=RequestMethod.GET)
+    @HystrixCommand(fallbackMethod = "processHystrix_Get")
     public Dept get(@PathVariable("id") Long id)
     {
         Dept dept =  this.deptService.get(id);
@@ -31,10 +39,11 @@ public class DeptController {
         return dept;
     }
 
-    @RequestMapping(value="/dept/list",method=RequestMethod.GET)
-    public List<Dept> list()
+    public Dept processHystrix_Get(@PathVariable("id") Long id)
     {
-        return deptService.list();
+        return new Dept().setDeptno(id)
+                .setDname("该ID："+id+"没有没有对应的信息,null--@HystrixCommand")
+                .setDb_source("no this database in MySQL");
     }
 
     @Autowired

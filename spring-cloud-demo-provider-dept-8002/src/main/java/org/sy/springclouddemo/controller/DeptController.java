@@ -23,12 +23,7 @@ public class DeptController {
     @RequestMapping(value="/dept/get/{id}",method=RequestMethod.GET)
     public Dept get(@PathVariable("id") Long id)
     {
-        Dept dept =  this.deptService.get(id);
-        if(null == dept)
-        {
-            throw new RuntimeException("该ID："+id+"没有没有对应的信息");
-        }
-        return dept;
+        return deptService.get(id);
     }
 
     @RequestMapping(value="/dept/list",method=RequestMethod.GET)
