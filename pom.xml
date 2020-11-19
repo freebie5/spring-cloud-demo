@@ -19,6 +19,9 @@
         <module>spring-cloud-demo-consumer-dept-feign</module>
         <module>spring-cloud-demo-provider-dept-hystrix-8001</module>
         <module>spring-cloud-demo-consumer-hystrix-dashboard</module>
+        <module>spring-cloud-demo-zuul-gateway-9527</module>
+        <module>spring-cloud-demo-config-3344</module>
+        <module>spring-cloud-demo-config-client-3355</module>
     </modules>
     <packaging>pom</packaging>
 
