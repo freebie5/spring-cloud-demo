@@ -22,6 +22,8 @@
         <module>spring-cloud-demo-zuul-gateway-9527</module>
         <module>spring-cloud-demo-config-3344</module>
         <module>spring-cloud-demo-config-client-3355</module>
+        <module>spring-cloud-demo-config-eureka-client-7001</module>
+        <module>spring-cloud-demo-config-dept-client-8001</module>
     </modules>
     <packaging>pom</packaging>
 
